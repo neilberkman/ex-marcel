@@ -112,7 +112,7 @@ defmodule ExMarcel.Magic do
     mime =
       case ext |> String.slice(0..0) do
         "." ->
-          ext = ext |> String.slice(1..-1)
+          ext = ext |> String.slice(1..-1//-1)
           TableWrapper.extensions() |> Map.get(ext)
 
         _ ->
@@ -211,8 +211,9 @@ defmodule ExMarcel.Magic do
 
           # here we ask for a range
           offset.__struct__ == Range ->
-            # IO.inspect(value)
-            # IO.binread(io, offset.first)
+            # Skip to the start of the range
+            IO.binread(io, offset.first)
+            # Read from offset.first to offset.last plus value size
             x = IO.binread(io, offset.last - offset.first + byte_size(value))
 
             case x do
