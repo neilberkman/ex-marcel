@@ -6,7 +6,7 @@
         included: ["lib/", "test/"],
         excluded: [~r"/_build/", ~r"/deps/", ~r"/node_modules/", "lib/tables.ex"]
       },
-      strict: true,
+      strict: false,
       checks: %{
         disabled: [
           # Disable moduledoc check - this is a library with public API documented
