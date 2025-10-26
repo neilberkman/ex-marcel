@@ -1,7 +1,9 @@
 defmodule MagicAndNameTest do
   use ExUnit.Case, async: true
-  doctest ExMarcel
+
   alias ExMarcel.{MimeType}
+
+  doctest ExMarcel
 
   test "correctly returns content_type for name given both file and name" do
     # All fixtures that can be recognised by name should also be recognisable when given
